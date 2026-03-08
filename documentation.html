@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SplitBuddy | Developer Documentation & Interview Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --accent: #7c3aed;
+            --bg: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.7);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --card-border: rgba(226, 232, 240, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Abstract Background shapes */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: -60px auto 100px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 10px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            border: 1px solid white;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: transparent;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* Content Sections */
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            border: 1px solid var(--card-border);
+            margin-bottom: 30px;
+            display: none;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .card.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            color: var(--text-main);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2 span {
+            color: var(--primary);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin: 30px 0 15px;
+            color: var(--text-main);
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+        }
+
+        ul {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            padding-left: 28px;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Grid for features */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            background: #f1f5f9;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        /* Interview Pills */
+        .pill {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #dbeafe;
+            color: var(--primary);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* Code snippets */
+        code {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+
+        .code-block {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 20px;
+            border-radius: 16px;
+            font-family: monospace;
+            margin: 20px 0;
+            position: relative;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 2.5rem; }
+            .container { margin-top: -30px; }
+            .nav-tabs { flex-direction: column; border-radius: 24px; }
+            .card { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1>SplitBuddy</h1>
+        <p>Developer Documentation & Comprehensive Interview Guide</p>
+    </section>
+
+    <div class="container">
+        <nav class="nav-tabs">
+            <button class="tab-btn active" onclick="showTab('overview')">Project Overview</button>
+            <button class="tab-btn" onclick="showTab('frontend')">Frontend Architecture</button>
+            <button class="tab-btn" onclick="showTab('logic')">Core Features & Logic</button>
+            <button class="tab-btn" onclick="showTab('interview')">Interview Q&A</button>
+        </nav>
+
+        <!-- Overview Section -->
+        <div id="overview" class="card active">
+            <h2><span>📦</span> Project Overview</h2>
+            <p>SplitBuddy is a high-performance MERN-stack inspired application designed for effortless expense management among friends and groups.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>Frontend Focus</h3>
+                    <p>Built with <strong>Vue 3 & Pinia</strong>, leveraging the Composition API for highly modular and reactive UI components.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Robust Backend</h3>
+                    <p>Powered by <strong>Node.js/Express</strong> and <strong>MongoDB</strong>, handling complex financial calculations and data persistence.</p>
+                </div>
+            </div>
+
+            <h3>Technology Stack Breakdown</h3>
+            <ul>
+                <li><strong>Vue 3:</strong> Reactive framework using <code>script setup</code> syntax.</li>
+                <li><strong>Pinia:</strong> Modern state management (Store/Actions/Getters).</li>
+                <li><strong>Tailwind CSS:</strong> Utility-first styling for premium responsive design.</li>
+                <li><strong>JWT Auth:</strong> Stateless authentication with encrypted tokens.</li>
+                <li><strong>Mongoose:</strong> Schema-based modeling for data integrity.</li>
+            </ul>
+        </div>
+
+        <!-- Frontend Section -->
+        <div id="frontend" class="card">
+            <h2><span>🎨</span> Frontend Architecture</h2>
+            <p>The frontend is architected as a modern Single Page Application (SPA) prioritizing performance and developer experience.</p>
+
+            <div class="code-block">
+                src/<br>
+                ├── services/ &nbsp;&nbsp;&nbsp; # Axios interceptors & API calls<br>
+                ├── store/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Global state (Auth, User data)<br>
+                ├── pages/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Routed views (Auth, Dashboard)<br>
+                └── components/ &nbsp; # Reusable UI (Modals, Charts)
+            </div>
+
+            <h3>Key Architectural Wins:</h3>
+            <ul>
+                <li><strong>Axios Interceptors:</strong> Automatically handles token injection and global 401 error redirects.</li>
+                <li><strong>Navigation Guards:</strong> Route protection logic to ensure guest-only and auth-only views.</li>
+                <li><strong>Responsive Grid:</strong> Used Tailwind flexbox and grid systems to ensure mobile-tablet-desktop parity.</li>
+                <li><strong>State Hydration:</strong> Automatic session recovery from <code>localStorage</code> on app boot.</li>
+            </ul>
+        </div>
+
+        <!-- Logic Section -->
+        <div id="logic" class="card">
+            <h2><span>⚙️</span> Core Features & Logic</h2>
+            
+            <div class="pill">Complex Implementation</div>
+            <h3>1. The Split Engine</h3>
+            <p>Implementing the splitting logic required three distinct mathematical models in the frontend:</p>
+            <ul>
+                <li><strong>Equal Split:</strong> <code>Amount / Participants</code> with precision rounding.</li>
+                <li><strong>Exact Amount:</strong> Real-time sum validation using <code>computed</code> properties.</li>
+                <li><strong>Percentage Split:</strong> Ensure <code>Σ (%) = 100</code> before allowing form submission.</li>
+            </ul>
+
+            <div class="pill">Dual Authentication</div>
+            <h3>2. Modern Auth Flow</h3>
+            <p>A unified authentication experience supporting both legacy and modern social logins:</p>
+            <ul>
+                <li><strong>Standard Auth:</strong> Manual Email/Password with client-side hashing support.</li>
+                <li><strong>Google One-Tap:</strong> Integration with <code>accounts.google.com/gsi</code> for effortless entry.</li>
+                <li><strong>Consolidated UI:</strong> A single, reactive page handling Signup, Login, and Social Auth in one view.</li>
+            </ul>
+        </div>
+
+        <!-- Interview Section -->
+        <div id="interview" class="card">
+            <h2><span>🎙️</span> Interview Preperation</h2>
+            <p>Use these specific technical answers when asked by an interviewer.</p>
+
+            <div class="feature-item">
+                <p class="pill">Q: How did you handle state management?</p>
+                <p><strong>A:</strong> "I chose Pinia for SplitBuddy because it offers a clean, modular architecture that integrates seamlessly with Vue 3's Composition API. I used it to manage user sessions globally so that components could react to authentication changes without prop drilling."</p>
+            </div>
+
+            <div class="feature-item" style="margin-top: 20px;">
+                <p class="pill">Q: How did you ensure accuracy in splitting?</p>
+                <p><strong>A:</strong> "Accuracy was a priority. I built a validation layer using Vue watchers and computed properties that verify total sums and percentages in real-time. This prevents users from submitting invalid financial data before it even hits the backend."</p>
+            </div>
+
+            <div class="feature-item" style="margin-top: 20px;">
+                <p class="pill">Q: Tell us about the premium UI design.</p>
+                <p><strong>A:</strong> "I implemented a premium design system using Tailwind CSS, focusing on glassmorphism and smooth transitions. I used backdrop filters and deep shadows to create a sense of depth, ensuring the app feels more like a modern native application."</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        SplitBuddy Project Documentation &copy; 2026<br>
+        Developed for Professional Frontend Portfolios
+    </footer>
+
+    <script>
+        function showTab(tabId) {
+            // Remove active classes
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
+            
+            // Add active classes
+            event.currentTarget.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+            
+            // Scroll to container top (optional)
+            // window.scrollTo({ top: 150, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "splitbuddy-server",
+  "version": "1.0.0",
+  "description": "Backend API for SplitBuddy - A Splitwise clone",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^5.0.2",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.3",
+    "nodemailer": "^6.9.1",
+    "googleapis": "^115.0.0",
+    "google-auth-library": "^8.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
